@@ -29,13 +29,18 @@ class Effect extends Cards {
         
     }
 
-    play( target ) {
-        if( target instanceof Unit ) {
-            target.res += this.magnitude;
+    play(target) {
+        if (target instanceof Unit) {
+            if (this.stat == "resilience") {
+                target.res += this.magnitude;
+            } else {
+                target.power += this.magnitude;
+            }
         } else {
-            throw new Error( "Target must be a effect!" );
+            throw new Error("Target must be a unit!");
         }
     }
+    
 }
 
 const red = new Unit("Red Belt Ninja", 3, 3, 4);
@@ -49,19 +54,16 @@ const unhandled = new Effect("Unhandled Promise Rejection", 1, "reduce target's 
 const pair = new Effect("Pair Programming", 3, "increase target's resilience by 2", "power", +2);
 
 console.log(red);
-console.log(hard);
-hard.play(red);
-console.log(red);
-console.log(hard);
 console.log(black);
-unhandled.play(red);
-console.log(red);
+console.log(hard);
 console.log(unhandled);
 console.log(pair);
+
+hard.play(red);
+console.log(red);
+unhandled.play(red);
+console.log(red);
 pair.play(red);
 console.log(red);
-console.log(pair);
 red.attack(black);
-black.attack(red);
-console.log(red);
 console.log(black);
