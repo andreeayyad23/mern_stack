@@ -11,11 +11,12 @@ class Unit extends Cards {
         this.power = power;
         this.res = res;
     }
-    attack ( target ){
+
+    attack (target) {
         if (target instanceof Unit) {
             target.res -= this.power;
         }else{
-            throw new Error ("Target must be a unit!")
+            console.log("TARGET NOT FROM UNIT CARD!");
         }
     }
 }
@@ -33,6 +34,8 @@ class Effect extends Cards {
         if (target instanceof Unit) {
             if (this.stat == "resilience") {
                 target.res += this.magnitude;
+            } else if (this.name == "Unhandled Promise Rejection") {
+                target.res -= this.magnitude;
             } else {
                 target.power += this.magnitude;
             }
@@ -40,8 +43,8 @@ class Effect extends Cards {
             throw new Error("Target must be a unit!");
         }
     }
-    
 }
+// const card2 = new Cards("Hello", 3);
 
 const red = new Unit("Red Belt Ninja", 3, 3, 4);
 
@@ -61,9 +64,10 @@ console.log(pair);
 
 hard.play(red);
 console.log(red);
-unhandled.play(red);
-console.log(red);
+unhandled.play(black);
+console.log(black);
 pair.play(red);
 console.log(red);
 red.attack(black);
 console.log(black);
+// console.log(card2.cost)
