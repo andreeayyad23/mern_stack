@@ -5,18 +5,16 @@ const BoxGenerator = (props) => {
     const [size, setSize] = useState(100);
 
     const addBox = (e) => {
-        e.preventDefault();
-
-        const newBox = {
-            size: size,
-            color: color,
-        };
-
-        props.addBox(newBox);
-
-        setColor("");
-        setSize(100);
-    };
+      e.preventDefault();
+  
+      const newBox = { size, color };
+  
+      props.addBox(newBox);
+  
+      setColor("");
+      setSize(100);
+  };
+  
 
   return (
     <>
