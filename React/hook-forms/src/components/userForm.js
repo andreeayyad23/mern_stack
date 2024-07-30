@@ -24,7 +24,7 @@ const HookForm = (props) => {
 
     
     return(
-        
+        <>
             <form onSubmit={ createUser }>
                 <div>
                     <label htmlFor='firstName'>First Name:</label>
@@ -46,7 +46,7 @@ const HookForm = (props) => {
                     <label htmlFor='confirmPassword'>Confirm Password:</label>
                     <input type = 'password' value = {confirmPassword} onChange= {(e)=> setConfirmPassword(e.target.value)}/>
                 </div>
-                
+                </form>
 
             <div className='data'>
                 <h2>Your Form Data</h2>
@@ -56,8 +56,8 @@ const HookForm = (props) => {
                 <p>Password: {password}</p>
                 <p>Confirm Password: {confirmPassword}</p>
             </div>
-        </form>
-            
+        
+        </>
     );
 };
 export default HookForm;
