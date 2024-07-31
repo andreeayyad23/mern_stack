@@ -5,13 +5,13 @@ import Form from './components/boxGeneratoor';
 function App() {
   const [boxes, setBoxes] = useState([]);
 
-  function addBox(newBox) {
+  function addBoxs(newBox) {
     setBoxes([...boxes, newBox])
   }
   
   return (
     <div className="App">
-      <Form newBox={addBox}/>
+      <Form addBox={addBoxs}/>
       <div style={{display:"flex"}}>
         {
           boxes.map((box, i) => {
