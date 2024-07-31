@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 
 const Form = ({newBox}) => {
-    const [color, setColor] = useState('');
-    const [size, setSize] = useState(200);
+  const [color, setColor] = useState('');
+  const [size, setSize] = useState(200);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    newBox({ color, size });
+    setColor('');
+    setSize(200);
+    };
 
     const handleColorChange = (e) => {
         setColor(e.target.value);
@@ -12,13 +20,7 @@ const Form = ({newBox}) => {
         setSize(e.target.value);
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        newBox({ color, size });
-        setColor('');
-        setSize(200);
-    };
+  
 
     return (
         <form onSubmit={handleSubmit}>
