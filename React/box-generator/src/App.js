@@ -1,24 +1,26 @@
-import React from 'react';
-import { useState } from "react";
+import React, { useState } from 'react'
 import './App.css';
-import BoxGeneratoor from './components/boxGeneratoor';
-import Box from './components/boxDisplay';
+import Form from './components/boxGeneratoor';
 
 function App() {
   const [boxes, setBoxes] = useState([]);
 
-  const addBox = (newBox) => {
-      setBoxes([newBox, ...boxes]);
-  };
-
+  function newBox(newBox) {
+    setBoxes([...boxes, newBox])
+  }
+  
   return (
-      <div className="App">
-          <BoxGeneratoor addBox={addBox} />
-
-          {boxes.map((box, index) => (
-              <Box key={index} size={box.size} color={box.color} />
-          ))}
+    <div className="App">
+      <Form newBox={newBox}/>
+      <div style={{display:"flex"}}>
+        {
+          boxes.map((box, i) => {
+            return <div key={i} style={{ backgroundColor: box.color, width: box.size+"px", height: box.size+"px", marginRight: 10,}}>
+            </div>
+          })
+        }
       </div>
+    </div>
   );
 }
 

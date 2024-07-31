@@ -1,43 +1,40 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-const BoxGenerator = (props) => {
-    const [color, setColor] = useState("");
-    const [size, setSize] = useState(100);
+const Form = ({newBox}) => {
+    const [color, setColor] = useState('');
+    const [size, setSize] = useState(200);
 
-    const addBox = (e) => {
-      e.preventDefault();
-  
-      const newBox = { size, color };
-  
-      props.addBox(newBox);
-  
-      setColor("");
-      setSize(100);
-  };
-  
+    const handleColorChange = (e) => {
+        setColor(e.target.value);
+    };
 
-  return (
-    <>
-    <h1>Box Generator:</h1>
-      <form onSubmit={addBox}>
-        <div className="input-group mb-2">
-          <div className="input-group-prepend">
-            <span className="input-group-text" value="color">Color</span>
-          </div>
-          <input type="text" className="form-control test" value={color} onChange={(e) => setColor(e.target.value)}/>
-        </div>
-        <div className="input-group mb-2">
-          <div className="input-group-prepend">
-              <span className="input-group-text">Size</span>
-                </div>
-                <input type="number" className="form-control test" value={size} onChange={(e) => setSize(e.target.value)}
+    const handleSizeChange = (e) => {
+        setSize(e.target.value);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        newBox({ color, size });
+        setColor('');
+        setSize(200);
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <div>
+                <label>Color</label>
+                <input type="text" value={color} onChange={handleColorChange}
                 />
-                </div>
-          <button type="submit" className="btn btn-danger">Add</button>
-      </form>
-    </>
-  );
+            </div>
+            <div>
+                <label>Size</label>
+                <input type="number" value={size} onChange={handleSizeChange}
+                />
+            </div>
+            <button type="submit">Add</button>
+        </form>
+    );
 };
 
-
-export default BoxGenerator;
+export default Form;
