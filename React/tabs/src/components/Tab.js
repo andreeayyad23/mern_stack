@@ -6,15 +6,15 @@ const ShowTabs = () => {
     const [msg, setMsg] = useState("");
 
     const clickHandler = (value) => {
-        setMsg(value + " was tapped");
+        setMsg(value + "content is showing here");
     };
 
     return (
         <div className="container mt-4">
             <div className="btn-group">
-                {taps.map((value, i) => (
-                    <button key={i} className="btn btn-primary me-2" onClick={() => clickHandler(value)}> 
-                    {value}
+                {taps.map((item, i) => (
+                    <button key={i} className="btn btn-primary me-2" onClick={() => clickHandler(item)}> 
+                    {item}
                     </button> ))}
             </div>
 
