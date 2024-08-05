@@ -30,7 +30,6 @@ const createCompany = () => {
     return newCompany;
 };
 
-// Example usage
 console.log(createCompany());
 console.log(createUsers());
 
@@ -38,8 +37,12 @@ app.get("/api/user/new", (req, res) => {
     res.json(createUsers());
 });
 
-app.get("/api/companie/new", (req, res) => {
+app.get("/api/companies/new", (req, res) => {
     res.json(createCompany());
+});
+
+app.get("/api/user/company", (req, res) => {
+    res.json({ user :createUsers(), company: createCompany() });
 });
 
 app.listen(port, () => {
