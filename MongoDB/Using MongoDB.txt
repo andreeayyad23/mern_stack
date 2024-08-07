@@ -12,7 +12,7 @@ db.students.insert({
 ...   }
 ... })
  {
-...     name: "Jane Doe",
+...     name: "Jan Younan",
 ...     home_state: "California",
 ...     lucky_number: 13,
 ...     birthday: {
@@ -22,7 +22,7 @@ db.students.insert({
 ...     }
 ...   },
 ...   {
-...     name: "Saleem Lour",
+...     name: "Saleem Shofani",
 ...     home_state: "Washington",
 ...     lucky_number: 3,
 ...     birthday: {
@@ -32,7 +32,7 @@ db.students.insert({
 ...     }
 ...   },
 ...   {
-...     name: "Michael Board",
+...     name: "Michael dor",
 ...     home_state: "Texax",
 ...     lucky_number: 11,
 ...     birthday: {
