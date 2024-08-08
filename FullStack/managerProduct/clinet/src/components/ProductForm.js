@@ -8,12 +8,14 @@ const ProductForm = ({addProduct}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault() ;
-        axios.post("http://localhost:8000/api/products",{title,price,description})
+        axios.post("http://localhost:8000/api/products",{
+            title,
+            price,
+            description})
         .then(res => {
             addProduct(res.data.product)
             console.log(res.data)})
         .catch(err => console.log(err)) ; 
-
         setTitle('') ;
         setPrice(0);
         setDesc('') ; 
@@ -21,7 +23,9 @@ const ProductForm = ({addProduct}) => {
 
 
   return (
-    <div className='my-5 d-flex justify-content-center'>
+    <>
+            <h2 className='text-center'>Product Manager</h2>
+            <div className='my-5 d-flex justify-content-center'>
         <form  onSubmit={handleSubmit}>
             <table className='table'>
                 <tbody>
@@ -43,11 +47,9 @@ const ProductForm = ({addProduct}) => {
                     </tr>
                 </tbody>
             </table>
-        </form>
-
-     
+        </form>     
     </div>
+</>
   )
 }
-
 export default ProductForm
