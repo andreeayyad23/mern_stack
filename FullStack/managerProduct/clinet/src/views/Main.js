@@ -24,22 +24,16 @@ const Main = () => {
         setProducts([...products,newProduct]) ; 
     }
 
-<<<<<<< HEAD
     const removeFromDom = productId => {
       setProducts(products.filter(product => product._id !== productId));
   }
-=======
->>>>>>> 1152d6b7181357108f73b8ef5e05d6f9369da92f
+
 
   return (
     <div>
       <ProductForm addProduct={addProduct}/>
-<<<<<<< HEAD
       <hr/>
       {load && <ProductList products={products} removeFromDom={removeFromDom}/>}
-=======
-      {load && <ProductList products={products}/>}
->>>>>>> 1152d6b7181357108f73b8ef5e05d6f9369da92f
       <ProductDetails/>
     </div>
   )

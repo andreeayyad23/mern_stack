@@ -22,7 +22,7 @@ const ProductUpdates = () => {
                 console.error(err);
                 setLoading(false);
             });
-    }, []);
+    }, [id]);
 
     const updateProduct = (e) => {
         e.preventDefault();
