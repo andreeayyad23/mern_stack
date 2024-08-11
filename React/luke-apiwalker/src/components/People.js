@@ -8,6 +8,10 @@ const People =()=>{
     const [people , setPeople] = useState({});
     const [error, setError] = useState(""); 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1152d6b7181357108f73b8ef5e05d6f9369da92f
     useEffect(()=>{
         axios.get(`https://swapi.dev/api/people/${id}`)
         .then(response=>{

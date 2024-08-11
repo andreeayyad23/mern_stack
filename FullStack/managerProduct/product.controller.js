@@ -1,10 +1,6 @@
 const {Product} = require("../models/product.model")
 
-<<<<<<< HEAD
 //index
-=======
-
->>>>>>> 1152d6b7181357108f73b8ef5e05d6f9369da92f
 module.exports.index = (request, response) => {
     response.json({
         message: "Hello World"
@@ -31,7 +27,6 @@ module.exports.getProduct = (request, response) => {
     Product.findOne({_id:request.params.id})
         .then(product => response.json(product))
         .catch(err => response.json(err))
-<<<<<<< HEAD
 }
 
 //update
@@ -47,6 +42,4 @@ module.exports.updateProduct = (request, response) => {
     Product.deleteOne({ _id: request.params.id })
         .then(deleteConfirmation => response.json(deleteConfirmation))
         .catch(err => response.json(err))
-=======
->>>>>>> 1152d6b7181357108f73b8ef5e05d6f9369da92f
 }
