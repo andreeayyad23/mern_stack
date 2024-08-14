@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 const UpdatePlayer = () => {
     const { id } = useParams();
     const [playerName, setPlayerName] = useState('');
+    const [playerPosition, setPlayerPosition] = useState('');
     const [loading, setLoading] = useState(false);
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
@@ -26,7 +27,7 @@ const UpdatePlayer = () => {
         e.preventDefault();
         setLoading(true);
 
-        axios.put(`http://localhost:8000/api/players/update/${id}`, { playerName })
+        axios.put(`http://localhost:8000/api/players/update/${id}`, { playerName, playerPosition })
             .then(res => 
                 navigate("/") 
             )
@@ -49,18 +50,28 @@ const UpdatePlayer = () => {
             <h3>Edit Player Name</h3>
             <form onSubmit={onSubmitHandler} className="mt-3">
                 {errors.length > 0 && (
-                    <div className="alert alert-danger">
+                    <div className="text text-danger">
                         {errors.map((err, index) => <p key={index}>{err}</p>)}
                     </div>
                 )}
                 <div className="mb-3">
-                    <label htmlFor="authorName" className="form-label">Change Player</label>
+                    <label htmlFor="playerNmae" className="form-label">Change Player</label>
                     <input
                         id="authorName"
                         type="text"
                         className="form-control"
                         value={playerName}
                         onChange={(e) => setPlayerName(e.target.value)}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="playerPosotion" className="form-label">Change Position</label>
+                    <input
+                        id="authorName"
+                        type="text"
+                        className="form-control"
+                        value={playerPosition}
+                        onChange={(e) => setPlayerPosition(e.target.value)}
                     />
                 </div>
                 <button type="submit" className="btn btn-primary">
