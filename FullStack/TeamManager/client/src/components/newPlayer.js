@@ -9,29 +9,11 @@ const NewPlayer = (props) => {
     const [nameError, setNameError] = useState("");
     const navigate = useNavigate();
 
-    // Function to check if the player name is duplicated
-    const checkDuplicateName = async (name) => {
-        try {
-            const response = await axios.get(`http://localhost:8000/api/players/check?name=${name}`);
-            return response.data.exists;
-        } catch (error) {
-            console.error("Error checking duplicate name:", error);
-            return false;
-        }
-    };
 
-    const onSubmitHandle = async (e) => {
+    const onSubmitHandle = (e) => {
         e.preventDefault();
-        setNameError("");  // Clear previous name error
+        setNameError(""); 
 
-        // Check if the player name already exists
-        const isDuplicate = await checkDuplicateName(playerName);
-        if (isDuplicate) {
-            setNameError("Player name already exists.");
-            return;  // Prevent form submission
-        }
-
-        // Proceed with form submission
         axios.post("http://localhost:8000/api/players/new", {
             playerName, 
             playerPosition
@@ -57,6 +39,7 @@ const NewPlayer = (props) => {
                         {errors.map((err, index) => <p key={index}>{err}</p>)}
                     </div>
                 )}
+                
                 {nameError && (
                     <div className="text text-danger">
                         <p>{nameError}</p>

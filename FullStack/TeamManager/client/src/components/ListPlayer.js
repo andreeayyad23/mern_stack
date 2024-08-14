@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import DeleteButton from './DeleteButton';
 
 const ListPlayer = (props) => {
     const [players, setPlayers] = useState([]);
-
+    const navigate = useNavigate();
     useEffect(() => {
         axios.get('http://localhost:8000/api/players')
             .then(res => {
@@ -28,6 +28,7 @@ const ListPlayer = (props) => {
           <thead>
                   <tr>
                       <th>Team Name</th>
+                      <th>Editing</th>
                       <th>Player Position</th>
                       <th>Actions</th>
                   </tr>
@@ -35,8 +36,10 @@ const ListPlayer = (props) => {
               <tbody>
                   {players.map((player, idx) => (
                       <tr key={idx}>
-                          <td>{player.playerName}</td>
-                          <td>{player.playerPosition}</td>
+                         <td>{player.playerName}</td>
+                         <td><button className="btn btn-warning" onClick={() => navigate(`/edit/${player._id}`)}>Edit</button>
+                         </td>
+                        <td>{player.playerPosition}</td>
                           <td>
                               <DeleteButton
                                   playerId={player._id}

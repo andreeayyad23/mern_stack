@@ -7,6 +7,8 @@ const PlayerSchema = new mongoose.Schema({
      },
     playerPosition: { 
         type: String,
+        required:[true, "Player Posotion is required!"],
+        minlength:[3, "Player Posotion must be 3 characters in length!"]
      }
 }, { timestamps: true });
 module.exports.Player = mongoose.model('Player', PlayerSchema);
