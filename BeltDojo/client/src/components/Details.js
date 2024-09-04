@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import './Navbar.css'; // Import custom CSS
+import './Navbar.css';
 
 const Details = () => {
     const { id } = useParams();
